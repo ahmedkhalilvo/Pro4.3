@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حقيبة إنقاذ المهندس PRO v4.3 | منظومة هندسية متكاملة لشبكات الصرف والمياه</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#080c14',
+                        cardBg: '#0f172a',
+                        cardBorder: '#1e293b',
+                        goldPrimary: '#d4af37',
+                        goldLight: '#f3e5ab',
+                        goldHover: '#b89728',
+                        cyanAccent: '#00d2ff',
+                        cyanGlow: 'rgba(0, 210, 255, 0.15)',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        goldGlow: '0 0 25px rgba(212, 175, 55, 0.25)',
+                        cyanGlow: '0 0 25px rgba(0, 210, 255, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #080c14;
+            color: #f8fafc;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .glass-panel-cyan {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        /* Animated Gradient Border */
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(0, 210, 255, 0.2), rgba(15, 23, 42, 0.8));
+            padding: 1px;
+        }
+
+        /* Pulse Animations */
+        @keyframes subtlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .animate-subtle-pulse {
+            animation: subtlePulse 3s infinite ease-in-out;
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fff 0%, #f3e5ab 30%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cyan Gradient Text */
+        .text-cyan-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 40%, #00d2ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+
+        .tab-btn.active {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.15);
+            color: #f3e5ab;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-goldPrimary selection:text-black">
+
+    <!-- Sticky Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-goldPrimary to-cyanAccent flex items-center justify-between p-0.5 shadow-goldGlow">
+                    <div class="w-full h-full bg-darkBg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid font-bold text-goldPrimary text-lg">PRO</i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-tajawal font-bold text-lg leading-tight text-white">م. أحمد علي خليل</h1>
+                    <p class="text-xs text-goldPrimary font-medium">Kholio Studio | الهندسة البنية التحتية</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="#problem" class="hover:text-goldPrimary transition-colors">لماذا الحقيبة؟</a>
+                <a href="#contents" class="hover:text-goldPrimary transition-colors">المحتويات</a>
+                <a href="#video" class="hover:text-goldPrimary transition-colors">فيديو التوضيح</a>
+                <a href="#preview" class="hover:text-goldPrimary transition-colors">معرض الشاشات</a>
+                <a href="#calculator" class="hover:text-goldPrimary transition-colors">الحاسبة التفاعلية</a>
+            </div>
+
+            <a href="https://t.me/akhalilvo?text=أهلاً%20باشمهندس%20أحمد،%20أرغب%20في%20طلب%20حقيبة%20إنقاذ%20المهندس%20PRO%20v4.3%20بسعر%20العرض%2097%20ج.م" 
+               target="_blank"
+               class="bg-gradient-to-r from-goldPrimary to-yellow-600 text-slate-950 font-bold px-5 py-2.5 rounded-full shadow-goldGlow hover:brightness-110 transition-all flex items-center gap-2 text-sm">
+                <i class="fa-brands fa-telegram text-lg"></i>
+                <span>احصل عليها الآن</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Floating Telegram CTA Button (Mobile/Desktop) -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <a href="https://t.me/akhalilvo?text=أهلاً%20باشمهندس%20أحمد،%20أرغب%20في%20شراء%20حقيبة%20إنقاذ%20المهندس%20PRO%20v4.3" 
+           target="_blank"
+           class="flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold p-3 sm:px-5 sm:py-3 rounded-full shadow-2xl hover:scale-105 transition-all animate-bounce">
+            <i class="fa-brands fa-telegram text-2xl"></i>
+            <span class="hidden sm:inline">تواصل مباشر واستلام فوري</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-1/4 right-10 w-96 h-96 bg-goldPrimary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 bg-cyanAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <!-- Top Offer Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel-cyan border-cyanAccent/30 text-cyanAccent text-xs sm:text-sm font-semibold mb-6">
+                <span class="flex h-2 w-2 rounded-full bg-cyanAccent animate-ping"></span>
+                <span>تحديث v4.3 المعتمَد وفق الكود المصري 301-2021 ومراجع JICA</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-tajawal text-white leading-tight mb-6">
+                لا تضحّي بسمعتك الهندسية بسبب <br>
+                <span class="text-gold-gradient">أخطاء الحصر أو رفض القطاعات الطولية!</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                الحل الشامل والمجرب بين يديك: <strong class="text-goldLight font-semibold">"حقيبة إنقاذ المهندس PRO v4.3"</strong> منظومة أدوات إكسيل ديناميكية وأدلة مراجعة احترافية تمنحك الدقة والسرعة وتضمن لك اعتماد المخططات والمستخلصات بدون مفاصلة.
+            </p>
+
+            <!-- Price & Direct Action -->
+            <div class="max-w-md mx-auto glass-panel p-6 rounded-3xl border border-goldPrimary/30 shadow-goldGlow mb-8">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <span class="text-slate-400 text-lg line-through font-medium">197 ج.م</span>
+                    <span class="text-3xl sm:text-4xl font-black text-goldPrimary">97 ج.م فقط</span>
+                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 text-xs px-2.5 py-1 rounded-full font-bold">خصم 50%</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-6"><i class="fa-solid fa-clock text-goldPrimary ml-1"></i> عرض لفترة محدودة للمهندسين المتميزين</p>
+                
+                <a href="https://t.me/akhalilvo?text=أهلاً%20باشمهندس%20أحمد،%20أرغب%20في%20شراء%20حقيبة%20إنقاذ%20المهندس%20PRO%20v4.3%20بسعر%2097%20ج.م" 
+                   target="_blank"
+                   class="w-full block bg-gradient-to-r from-goldPrimary via-yellow-500 to-amber-600 hover:from-amber-600 hover:to-goldPrimary text-slate-950 font-extrabold text-lg py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-download ml-2"></i> اطلب الحقيبة واستلمها فوراً
+                </a>
+            </div>
+
+            <!-- Highlights Checklist -->
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-300">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyanAccent"></i> تسليم فوري عبر Google Drive</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyanAccent"></i> 17 شيت BOQ متكامل</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyanAccent"></i> حاسبة ميول وسرعات شاملة</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Pain Section -->
+    <section id="problem" class="py-16 bg-slate-900/60 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-4xl font-extrabold font-tajawal text-white mb-3">هل واجهت إحدى هذه الأزمات في عملك؟</h2>
+                <p class="text-slate-400 text-sm sm:text-base">معظم المهندسين يخسرون ساعات طويلة وأرقاماً مالية بسبب تفاصيل صغيرة</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-panel p-6 rounded-2xl border-red-500/20 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400 text-xl font-bold mb-4">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">رفض المستخلصات والقطاعات</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">تراكم الملاحظات من الاستشاري بسبب عدم تحقق السرعات الأدنى أو أخطاء حسابية في مناسيب الانحدار والبروفايل.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-panel p-6 rounded-2xl border-red-500/20 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400 text-xl font-bold mb-4">
+                        <i class="fa-solid fa-file-excel"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">تسريب الكميات والهالك</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">شيتات حصر غير منظمة تؤدي لعدم دقة الفروقات بين كميات الحفر والتجهيز والتوريد، مما يسبب خسائر في الميزانية.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-panel p-6 rounded-2xl border-red-500/20 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400 text-xl font-bold mb-4">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">إعادة العمل من الصفر</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">قضاء أيام في إعداد شيتات حصر وتعديل المعادلات يدوياً في كل مشروع، بدلاً من استخدام منظومة أوتوماتيكية جاهزة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Contents Section -->
+    <section id="contents" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-goldPrimary font-bold text-sm tracking-wider uppercase">حل حقيقي وتنفيذي</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-tajawal text-white mt-2">تفاصيل محتويات حقيبة إنقاذ المهندس PRO v4.3</h2>
+                <div class="w-20 h-1 bg-goldPrimary mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Content 1: BOQ PRO -->
+                <div class="glass-panel p-8 rounded-3xl border-goldPrimary/20 relative overflow-hidden group hover:border-goldPrimary/50 transition-all">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="p-4 bg-goldPrimary/10 text-goldPrimary rounded-2xl text-2xl">
+                            <i class="fa-solid fa-table"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-goldPrimary font-bold uppercase">المنتج الأول</span>
+                            <h3 class="text-xl font-bold text-white">ملف BOQ PRO (شيت إكسيل احترافي)</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-300 text-sm mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-goldPrimary"></i> <strong>17 شيت متكامل:</strong> تغطي الحفر، خطوط المياه، الصرف، المناهل، والمحابس.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-goldPrimary"></i> <strong>169 بند سعري تفصيلي:</strong> قاعدة أسعار محدثة مع كود محدد لكل بند.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-goldPrimary"></i> <strong>Dashboard تفاعلية:</strong> رسوم بيانية ومؤشرات أداء لتوزيع التكاليف والنسب.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-goldPrimary"></i> <strong>تحليل الهالك والتعديلات:</strong> شيت خاص لمتابعة فروق التوريد والتنفيذ.</li>
+                    </ul>
+                </div>
+
+                <!-- Content 2: Slope & Velocity Calculator -->
+                <div class="glass-panel-cyan p-8 rounded-3xl relative overflow-hidden group hover:border-cyanAccent/50 transition-all">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="p-4 bg-cyanAccent/10 text-cyanAccent rounded-2xl text-2xl">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-cyanAccent font-bold uppercase">المنتج الثاني</span>
+                            <h3 class="text-xl font-bold text-white">حاسبة الميول والسرعات PRO v4.3</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-300 text-sm mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyanAccent"></i> <strong>معادلات Manning كاملة:</strong> حساب الميول، والسرعة، والتدفق لكل قطر.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyanAccent"></i> <strong>دعم 12 مادة مواسير:</strong> PVC, HDPE, Ductile Iron, Concrete وغيرها.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyanAccent"></i> <strong>حساب قوة الجرف (Tractive Force):</strong> والتأكد من ظروف النحر والإطماء.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyanAccent"></i> <strong>مراجعة الميول الأدنى:</strong> جدول ملون تفاعلي لمعرفة الميل المعتمد فوراً.</li>
+                    </ul>
+                </div>
+
+                <!-- Content 3: User Guide PDF -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-700 hover:border-goldPrimary/40 transition-all">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="p-4 bg-red-500/10 text-red-400 rounded-2xl text-2xl">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-red-400 font-bold uppercase">المنتج الثالث</span>
+                            <h3 class="text-xl font-bold text-white">دليل المستخدم الشامل (57 صفحة PDF)</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        شرح تفصيلي مصور بالخطوات لكل خلية ومعادلة داخل الملفات، مع مثال تطبيقي لمشروع كامل من الفكرة والتسعير حتى استخراج النتائج النهائية.
+                    </p>
+                </div>
+
+                <!-- Content 4: Profile Review Guide PDF & Checklist -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-700 hover:border-cyanAccent/40 transition-all">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="p-4 bg-purple-500/10 text-purple-400 rounded-2xl text-2xl">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-purple-400 font-bold uppercase">المنتج الرابع</span>
+                            <h3 class="text-xl font-bold text-white">دليل المحترفين وقائمة مراجعة الـ 20 نقطة</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        دليل من 32 صفحة يشرح 10 أخطاء قاتلة في القطاعات الطولية تسبب رفض المكتب الفني، مرفق معه قائمة تحقق من 20 نقطة (هيدروليك، إنشائي، تنفيذي، تنسيقي).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facebook Video Embedded Section -->
+    <section id="video" class="py-16 bg-slate-900/80 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <span class="bg-goldPrimary/10 text-goldPrimary text-xs font-bold px-3 py-1 rounded-full">شاهد العرض المباشر</span>
+                <h2 class="text-2xl sm:text-4xl font-black font-tajawal text-white mt-2">معاينة فيديو تفصيلية للحقيبة الهندسية</h2>
+                <p class="text-slate-400 text-sm mt-2">استعرض كيفية استخدام الملفات والنتائج قبل الشراء</p>
+            </div>
+
+            <!-- Video Player Container -->
+            <div class="relative rounded-3xl overflow-hidden border-2 border-goldPrimary/30 shadow-2xl bg-black">
+                <div class="aspect-video w-full">
+                    <iframe 
+                        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1Qzb9krbpV%2F&show_text=false&width=560&t=0" 
+                        class="w-full h-full border-none"
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Screenshots & Gallery Section -->
+    <section id="preview" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-tajawal text-white">معرض الشاشات والأدوات الحقيقية</h2>
+                <p class="text-slate-400 text-sm mt-2">اضغط على التبويبات لاستعراض نماذج الحسابات المرفقة بالحقيبة</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+                <button onclick="switchTab('tab1')" id="tab1-btn" class="tab-btn active px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm transition-all">
+                    <i class="fa-solid fa-chart-pie ml-1"></i> Dashboard
+                </button>
+                <button onclick="switchTab('tab2')" id="tab2-btn" class="tab-btn px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm transition-all">
+                    <i class="fa-solid fa-receipt ml-1"></i> تحليل الأسعار
+                </button>
+                <button onclick="switchTab('tab3')" id="tab3-btn" class="tab-btn px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm transition-all">
+                    <i class="fa-solid fa-wave-square ml-1"></i> حاسبة الميول
+                </button>
+                <button onclick="switchTab('tab4')" id="tab4-btn" class="tab-btn px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm transition-all">
+                    <i class="fa-solid fa-clipboard-check ml-1"></i> قائمة المراجعة 20
+                </button>
+                <button onclick="switchTab('tab5')" id="tab5-btn" class="tab-btn px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm transition-all">
+                    <i class="fa-solid fa-book-open ml-1"></i> دليل المستخدم
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="glass-panel p-4 sm:p-6 rounded-3xl border border-slate-800 min-h-[350px] flex items-center justify-center">
+                <!-- Tab 1: Dashboard -->
+                <div id="tab1" class="tab-content w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <span class="text-goldPrimary text-xs font-bold uppercase">لوحة التحكم التفاعلية</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">Dashboard تحليل التكاليف</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                تلخيص شامل للمشروع يوضح إجمالي النفقات، توزيع التكاليف على الجداول (الحفر، شبكات المياه، الصرف، المناهل)، مع رسوم بيانية توضح إجمالي البنود ونسب التكلفة.
+                            </p>
+                            <span class="inline-block bg-goldPrimary/10 text-goldPrimary text-xs font-semibold px-3 py-1 rounded-md">✓ مدمج بملف الإكسيل الرئيسي</span>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2 shadow-2xl">
+                            <img src="1000009663.jpg" alt="Dashboard" class="w-full h-auto rounded-lg object-cover" onerror="this.src='https://placehold.co/600x400/0f172a/d4af37?text=Dashboard+Preview'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Rate Breakdown -->
+                <div id="tab2" class="tab-content hidden w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <span class="text-cyanAccent text-xs font-bold uppercase">تحليل التكلفة التفصيلي</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">شيت Rate Breakdown</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                تفكيك كل بند إلى مكونات السعر الأساسية: عمالة، معدات، خامات، نسب الهالك، وإجمالي الوحدة مع خانات صفراء قابلة للتعديل بسهولة.
+                            </p>
+                            <span class="inline-block bg-cyanAccent/10 text-cyanAccent text-xs font-semibold px-3 py-1 rounded-md">✓ 169 بند سعري جاهز</span>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2 shadow-2xl">
+                            <img src="1000009661.jpg" alt="Rate Breakdown" class="w-full h-auto rounded-lg object-cover" onerror="this.src='https://placehold.co/600x400/0f172a/00d2ff?text=Rate+Breakdown+Preview'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Min Slopes Calculator -->
+                <div id="tab3" class="tab-content hidden w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <span class="text-goldPrimary text-xs font-bold uppercase">حاسبة الميول الهيدروليكية</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">حساب السرعة الدنيا V_min</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                جداول ملونة أوتوماتيكية للتحقق من الميول الآمنة بحسب الأقطار ومعادلة Manning لتجنب الترسيب أو النحر داخل خطوط الصرف والمياه.
+                            </p>
+                            <span class="inline-block bg-goldPrimary/10 text-goldPrimary text-xs font-semibold px-3 py-1 rounded-md">✓ مطابقة للكود المصري</span>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2 shadow-2xl">
+                            <img src="1000009666.jpg" alt="Min Slopes" class="w-full h-auto rounded-lg object-cover" onerror="this.src='https://placehold.co/600x400/0f172a/d4af37?text=Slopes+Calculator'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: 20 Checklist Points -->
+                <div id="tab4" class="tab-content hidden w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <span class="text-purple-400 text-xs font-bold uppercase">ضمان اعتماد البروفايل</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">قائمة تحقق من 20 نقطة</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                قائمة تفقد حاسمة تشمل المحاور الهيدروليكية والإنشائية والتنفيذية والتنسيقية والتأكد من عمق التغطية ومناسيب المناهل قبل الاعتماد.
+                            </p>
+                            <span class="inline-block bg-purple-500/10 text-purple-400 text-xs font-semibold px-3 py-1 rounded-md">✓ حماية من رفض المكتب الفني</span>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2 shadow-2xl">
+                            <img src="1000009667.jpg" alt="Checklist" class="w-full h-auto rounded-lg object-cover" onerror="this.src='https://placehold.co/600x400/0f172a/a855f7?text=20+Checklist+Points'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: User Guide PDF Preview -->
+                <div id="tab5" class="tab-content hidden w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <span class="text-red-400 text-xs font-bold uppercase">المرجع النظري والتطبيقي</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">دليل المستخدم (57 صفحة PDF)</h3>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2 shadow-2xl">
+                            <img src="1000009668.jpg" alt="User Guide PDF" class="w-full h-auto rounded-lg object-cover" onerror="this.src='https://placehold.co/600x400/0f172a/f87171?text=PDF+Guide+Preview'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Value Calculator / Selector -->
+    <section id="calculator" class="py-16 bg-slate-900/60 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 rounded-3xl border-goldPrimary/30 relative">
+                <div class="text-center mb-8">
+                    <span class="bg-cyanAccent/10 text-cyanAccent text-xs font-bold px-3 py-1 rounded-full">استكشاف القيمة الشخصية</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-tajawal text-white mt-2">ماذا ستحقق لك هذه الحقيبة في عملك اليومي؟</h2>
+                    <p class="text-slate-400 text-sm mt-1">اختر المهام التي تحتاج لتسريعها وحمايتها في مشروعك الحالي:</p>
+                </div>
+
+                <div class="space-y-4 mb-8">
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-goldPrimary/40 cursor-pointer transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" checked class="calc-checkbox w-5 h-5 accent-goldPrimary rounded" onchange="updateCalc()">
+                            <span class="text-white text-sm font-medium">شيتات حصر ودراسـة تكاليف مع Dashboard (BOQ PRO)</span>
+                        </div>
+                        <span class="text-goldPrimary font-bold text-xs sm:text-sm">توفير 15 ساعة عمل</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-goldPrimary/40 cursor-pointer transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" checked class="calc-checkbox w-5 h-5 accent-goldPrimary rounded" onchange="updateCalc()">
+                            <span class="text-white text-sm font-medium">حساب الميول والسرعات وقوة الجرف أوتوماتيكياً v4.3</span>
+                        </div>
+                        <span class="text-cyanAccent font-bold text-xs sm:text-sm">تجنب أخطاء التصميم</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-goldPrimary/40 cursor-pointer transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" checked class="calc-checkbox w-5 h-5 accent-goldPrimary rounded" onchange="updateCalc()">
+                            <span class="text-white text-sm font-medium">قائمة تفقد 20 نقطة قبل تسليم القطاع الطولي الاستشاري</span>
+                        </div>
+                        <span class="text-purple-400 font-bold text-xs sm:text-sm">اعتماد بدون ملاحظات</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-goldPrimary/40 cursor-pointer transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" checked class="calc-checkbox w-5 h-5 accent-goldPrimary rounded" onchange="updateCalc()">
+                            <span class="text-white text-sm font-medium">أدلة المرجعية الشاملة (PDF 89 صفحة) للشرح والتدريب</span>
+                        </div>
+                        <span class="text-red-400 font-bold text-xs sm:text-sm">مرجع دائم لمكتبك</span>
+                    </label>
+                </div>
+
+                <!-- Final Value Summary Box -->
+                <div class="p-6 rounded-2xl bg-gradient-to-r from-slate-950 to-slate-900 border border-goldPrimary/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs text-slate-400">القيمة الهندسية الكلية للمنتج:</div>
+                        <div class="text-slate-300 font-bold text-lg"><span id="selected-count">4</span> أدوات رئيسية مكتملة</div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <div class="text-xs text-slate-400">سعر الاستثمار الحالي:</div>
+                        <div class="text-2xl sm:text-3xl font-black text-goldPrimary">97 جنيه مصري</div>
+                    </div>
+                    <a href="https://t.me/akhalilvo?text=أهلاً%20باشمهندس%20أحمد،%20اخترت%20محتويات%20الحقيبة%20الهندسية%20وأرغب%20في%20الشراء%20بسعر%2097%20ج.م" 
+                       target="_blank"
+                       class="bg-goldPrimary hover:bg-goldHover text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-goldGlow text-sm">
+                        اطلب هذه الباقة الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment & Guarantee Steps Section -->
+    <section class="py-20 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-goldPrimary font-bold text-xs uppercase tracking-wider">خطوات سهلة ومضمونة</span>
+                <h2 class="text-3xl font-bold font-tajawal text-white mt-1">طريقة الشراء والاستلام في 3 خطوات</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <!-- Step 1 -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 relative text-center">
+                    <div class="w-10 h-10 rounded-full bg-goldPrimary text-slate-950 font-black flex items-center justify-center mx-auto mb-4 text-lg">1</div>
+                    <h3 class="text-lg font-bold text-white mb-2">تحويل مبلغ العرض (97 ج.م)</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        اختر إحدى وسيلتي الدفع المتاحتين:<br>
+                        • <strong>InstaPay:</strong> <span class="text-goldLight font-mono">engaboukhalil@instapay</span><br>
+                        • <strong>اتصالات كاش:</strong> <span class="text-goldLight font-mono">01117416208</span>
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 relative text-center">
+                    <div class="w-10 h-10 rounded-full bg-goldPrimary text-slate-950 font-black flex items-center justify-center mx-auto mb-4 text-lg">2</div>
+                    <h3 class="text-lg font-bold text-white mb-2">إرسال صورة التحويل</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        التقط صورة لخطوة التحويل أو السكرين شوت وأرسلها على حساب تيليجرام المباشر الخاص بالمهندس أحمد خليل.
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 relative text-center">
+                    <div class="w-10 h-10 rounded-full bg-goldPrimary text-slate-950 font-black flex items-center justify-center mx-auto mb-4 text-lg">3</div>
+                    <h3 class="text-lg font-bold text-white mb-2">استلام رابط Google Drive</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        سيتم تزويدك فوراً برابط تحميل مباشر ورسمي لجميع أدوات وملفات الحقيبة PRO v4.3 بالكامل مع الدعم والمتابعة.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Money-back Guarantee Card -->
+            <div class="glass-panel p-8 rounded-3xl border-goldPrimary/40 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-20 h-20 rounded-full bg-goldPrimary/10 border border-goldPrimary/40 flex items-center justify-center text-goldPrimary text-4xl flex-shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">ضمان الفائدة والرضا التام</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        أثق تماماً أن هذه المنظومة ستوفر عليك عشرات الساعات من التخبط والتعديل اليدوي. الهدف هو مساعدتك وتطوير جودة مخرجاتك الهندسية لتعكس احترافيتك الحقيقية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-slate-900/40 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold font-tajawal text-center text-white mb-10">الأسئلة الشائعة</h2>
+            
+            <div class="space-y-4">
+                <details class="glass-panel p-5 rounded-2xl border-slate-800 group">
+                    <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                        <span>هل تعمل الملفات على أجهزة الموبايل أم الكمبيوتر فقط؟</span>
+                        <i class="fa-solid fa-chevron-down text-goldPrimary group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-3 leading-relaxed">
+                        ملفات الإكسيل تعمل بكفاءة على برنامج Microsoft Excel للكمبيوتر وكذلك تطبيق الإكسيل على الهواتف الذكية. وملفات الـ PDF تعمل على أي قارئ ملفات.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-2xl border-slate-800 group">
+                    <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                        <span>هل يمكنني التعديل على المعادلات والأسعار في شيتات الإكسيل؟</span>
+                        <i class="fa-solid fa-chevron-down text-goldPrimary group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-3 leading-relaxed">
+                        نعم بالتأكيد! الملف مفتوح ومصمم بخلايا مدخلات مخصصة باللون الأصفر، بحيث تسجل أسعار الخامات والمعدات الخاصة بمشروعك وتتعدل النتائج فوراً.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-2xl border-slate-800 group">
+                    <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center text-sm sm:text-base">
+                        <span>كيف يتم استلام الملفات بعد التحويل؟</span>
+                        <i class="fa-solid fa-chevron-down text-goldPrimary group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-3 leading-relaxed">
+                        بمجرد إرسال لقطة الشاشة (Screen Shot) على تيليجرام، يتم إرسال رابط Google Drive المنظم المحتوي على كافة الإكسيلات والأدلة فوراً.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Banner CTA -->
+    <footer class="py-12 border-t border-slate-800 bg-slate-950 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-tajawal text-white mb-4">
+                انضم إلى مئات المهندسين المحترفين اليوم
+            </h2>
+            <p class="text-slate-400 text-sm mb-6">احصل على النسخة الكاملة v4.3 مقابل 97 ج.م فقط قبل انتهاء مدة العرض</p>
+            
+            <a href="https://t.me/akhalilvo?text=أهلاً%20باشمهندس%20أحمد،%20حولْت%20المبلغ%20وأرغب%20في%20استلام%20حقيبة%20إنقاذ%20المهندس%20PRO" 
+               target="_blank"
+               class="inline-flex items-center gap-2 bg-gradient-to-r from-goldPrimary to-yellow-600 text-slate-950 font-black text-base py-3.5 px-8 rounded-full shadow-goldGlow hover:scale-105 transition-all">
+                <i class="fa-brands fa-telegram text-xl"></i>
+                <span>ارسل السكرين شوت على تيليجرام واستلم الحقيبة</span>
+            </a>
+
+            <div class="mt-12 text-slate-600 text-xs border-t border-slate-900 pt-6">
+                حقوق النشر والطبع محفوظة © 2026 - المهندس أحمد علي خليل (Kholio Studio)
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tab Switching Logic & Calculator JS -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Show current tab content & button
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId + '-btn').classList.add('active');
+        }
+
+        function updateCalc() {
+            const checkboxes = document.querySelectorAll('.calc-checkbox');
+            let count = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) count++;
+            });
+            document.getElementById('selected-count').innerText = count;
+        }
+    </script>
+</body>
+</html>
